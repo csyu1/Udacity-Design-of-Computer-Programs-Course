@@ -1,0 +1,30 @@
+         574004 function calls in 0.292 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+    12033    0.044    0.000    0.064    0.000 wild_hand.py:112(card_ranks)
+    11916    0.031    0.000    0.032    0.000 wild_hand.py:118(flush)
+    23712    0.013    0.000    0.027    0.000 wild_hand.py:123(straight)
+    80187    0.062    0.000    0.103    0.000 wild_hand.py:128(kind)
+    13815    0.024    0.000    0.049    0.000 wild_hand.py:136(two_pair)
+        1    0.000    0.000    0.292    0.292 wild_hand.py:27(<module>)
+      573    0.009    0.000    0.291    0.001 wild_hand.py:29(best_normal_hand)
+       26    0.000    0.000    0.000    0.000 wild_hand.py:40(replace_joker)
+        3    0.000    0.000    0.001    0.000 wild_hand.py:45(get_possible_hands)
+        3    0.001    0.000    0.292    0.097 wild_hand.py:63(best_wild_hand)
+        1    0.000    0.000    0.292    0.292 wild_hand.py:74(test_best_wild_hand)
+    12033    0.033    0.000    0.282    0.000 wild_hand.py:90(hand_rank)
+    12315    0.001    0.000    0.001    0.000 {len}
+    23766    0.007    0.000    0.007    0.000 {max}
+      796    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+   286855    0.041    0.000    0.041    0.000 {method 'count' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+    60165    0.012    0.000    0.012    0.000 {method 'index' of 'str' objects}
+       52    0.000    0.000    0.000    0.000 {method 'remove' of 'list' objects}
+    12033    0.007    0.000    0.007    0.000 {method 'sort' of 'list' objects}
+        3    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+    23712    0.007    0.000    0.007    0.000 {min}
+        3    0.000    0.000    0.000    0.000 {sorted}
+
+
