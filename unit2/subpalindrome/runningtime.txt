@@ -1,0 +1,57 @@
+ Wow wow wow 
+         1434717 function calls (1434714 primitive calls) in 0.647 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.001    0.001    0.647    0.647 alice_subpalindrome.py:1(<module>)
+        1    0.000    0.000    0.009    0.009 alice_subpalindrome.py:10(words_only)
+        1    0.000    0.000    0.004    0.004 alice_subpalindrome.py:4(pre_process_file)
+        1    0.000    0.000    0.009    0.009 re.py:173(findall)
+        1    0.000    0.000    0.000    0.000 re.py:230(_compile)
+        1    0.000    0.000    0.000    0.000 sre_compile.py:228(_compile_charset)
+        1    0.000    0.000    0.000    0.000 sre_compile.py:256(_optimize_charset)
+        1    0.000    0.000    0.000    0.000 sre_compile.py:428(_simple)
+        1    0.000    0.000    0.000    0.000 sre_compile.py:433(_compile_info)
+        2    0.000    0.000    0.000    0.000 sre_compile.py:546(isstring)
+        1    0.000    0.000    0.000    0.000 sre_compile.py:552(_code)
+        1    0.000    0.000    0.000    0.000 sre_compile.py:567(compile)
+      2/1    0.000    0.000    0.000    0.000 sre_compile.py:64(_compile)
+        4    0.000    0.000    0.000    0.000 sre_parse.py:135(__len__)
+        6    0.000    0.000    0.000    0.000 sre_parse.py:139(__getitem__)
+        1    0.000    0.000    0.000    0.000 sre_parse.py:143(__setitem__)
+        1    0.000    0.000    0.000    0.000 sre_parse.py:147(append)
+      3/2    0.000    0.000    0.000    0.000 sre_parse.py:149(getwidth)
+        1    0.000    0.000    0.000    0.000 sre_parse.py:187(__init__)
+       12    0.000    0.000    0.000    0.000 sre_parse.py:191(__next)
+        5    0.000    0.000    0.000    0.000 sre_parse.py:204(match)
+        9    0.000    0.000    0.000    0.000 sre_parse.py:210(get)
+        1    0.000    0.000    0.000    0.000 sre_parse.py:310(_parse_sub)
+        1    0.000    0.000    0.000    0.000 sre_parse.py:388(_parse)
+        1    0.000    0.000    0.000    0.000 sre_parse.py:67(__init__)
+        1    0.000    0.000    0.000    0.000 sre_parse.py:686(parse)
+        2    0.000    0.000    0.000    0.000 sre_parse.py:90(__init__)
+        1    0.000    0.000    0.000    0.000 subpalindrome.py:18(<module>)
+   481192    0.140    0.000    0.140    0.000 subpalindrome.py:18(is_palindrome)
+        1    0.000    0.000    0.001    0.001 subpalindrome.py:21(lower_text)
+   153419    0.386    0.000    0.565    0.000 subpalindrome.py:24(find_palindrome)
+        1    0.067    0.067    0.633    0.633 subpalindrome.py:42(longest_subpalindrome_slice)
+        1    0.000    0.000    0.000    0.000 {_sre.compile}
+        9    0.000    0.000    0.000    0.000 {isinstance}
+799977/799976    0.039    0.000    0.039    0.000 {len}
+       28    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'close' of 'file' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        5    0.000    0.000    0.000    0.000 {method 'find' of 'bytearray' objects}
+        1    0.009    0.009    0.009    0.009 {method 'findall' of '_sre.SRE_Pattern' objects}
+        1    0.000    0.000    0.000    0.000 {method 'items' of 'dict' objects}
+        2    0.001    0.001    0.001    0.001 {method 'join' of 'str' objects}
+        1    0.001    0.001    0.001    0.001 {method 'lower' of 'str' objects}
+        1    0.001    0.001    0.001    0.001 {method 'read' of 'file' objects}
+        1    0.002    0.002    0.002    0.002 {method 'split' of 'str' objects}
+        4    0.000    0.000    0.000    0.000 {min}
+        1    0.000    0.000    0.000    0.000 {open}
+        4    0.000    0.000    0.000    0.000 {ord}
+        2    0.000    0.000    0.000    0.000 {range}
+
+

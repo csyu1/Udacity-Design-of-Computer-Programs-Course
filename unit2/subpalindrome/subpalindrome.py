@@ -17,25 +17,41 @@
     
 def is_palindrome(text):
     return text == text[::-1]
+
+def lower_text(text):
+    return text.lower()
+
+def find_palindrome(text, reverse_text, index, start, end):
+    k = index + 1
+    forwards = True
+    has_palindrome = True
+    while index > -1 and k < len(text) and has_palindrome:
+        has_palindrome = False
+        incr = [(-1,1), (0,1), (-1, 0)]
+        for a,b in incr:
+            if index+a < 0 or k + b > len(text):
+                continue
+            if is_palindrome(text[index+a:k+b]):
+                has_palindrome = True
+                index = index + a
+                k = k + b
+                break
+    return (index, k)
+
     
 def longest_subpalindrome_slice(text):
     "Return (i, j) such that text[i:j] is the longest palindrome in text."
     # Your code here
-    text = text.lower()
-    start = 0
-    end = 0
+    text = lower_text(text)
+    start = end = 0
     reverse_text = text[::-1]
     for index, sub in enumerate(text):
         if index > start and index < end:
             continue
-        k = index
-        current_sub = ""
-        while current_sub in reverse_text and k < len(reverse_text): 
-            current_sub = current_sub + text[k]
-            k = k + 1
-            if is_palindrome(text[index:k]) and len(text[index:k]) > len(text[start:end]):
-                start = index 
-                end = k
+        (j, k) = find_palindrome(text, reverse_text, index, start, end)
+        if k - j > end - start: 
+            start = j
+            end = k
     return (start,end)        
 
 def test():
@@ -49,3 +65,4 @@ def test():
     assert L('xxxxx') == (0, 5)
     assert L('Mad am I ma dam.') == (0, 15)
     return 'tests pass'
+    
