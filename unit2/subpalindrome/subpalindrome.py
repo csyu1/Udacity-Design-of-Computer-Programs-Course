@@ -29,7 +29,7 @@ def find_palindrome(text, index):
         has_palindrome = False
         incr = [(-1,1), (0,1), (-1, 0)]
         for a,b in incr:
-            if index+a < 0 or k + b > len(text):
+            if index+a < 0 or k+b > len(text):
                 continue
             if is_palindrome(text[index+a:k+b]):
                 has_palindrome = True
@@ -47,7 +47,7 @@ def longest_subpalindrome_slice(text):
     for index, sub in enumerate(text):
         if index > start and index < end:
             continue
-        (j, k) = find_palindrome(text, index )
+        (j, k) = find_palindrome(text, index)
         if k - j > end - start: 
             start = j
             end = k
