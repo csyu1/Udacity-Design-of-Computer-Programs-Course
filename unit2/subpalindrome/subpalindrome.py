@@ -21,7 +21,7 @@ def is_palindrome(text):
 def lower_text(text):
     return text.lower()
 
-def find_palindrome(text, reverse_text, index, start, end):
+def find_palindrome(text, index):
     k = index + 1
     forwards = True
     has_palindrome = True
@@ -44,11 +44,10 @@ def longest_subpalindrome_slice(text):
     # Your code here
     text = lower_text(text)
     start = end = 0
-    reverse_text = text[::-1]
     for index, sub in enumerate(text):
         if index > start and index < end:
             continue
-        (j, k) = find_palindrome(text, reverse_text, index, start, end)
+        (j, k) = find_palindrome(text, index )
         if k - j > end - start: 
             start = j
             end = k
