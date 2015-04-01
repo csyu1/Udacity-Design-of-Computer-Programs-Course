@@ -35,7 +35,6 @@ def matchset(pattern, text):
     elif 'seq' == op:
         return set(t2 for t1 in matchset(x, text) for t2 in matchset(y, t1))
     elif 'alt' == op:
-        print matchset(x, text), matchset(y, text)
         return matchset(x, text) | matchset(y, text)
     elif 'dot' == op:
         return set([text[1:]]) if text else null
@@ -69,4 +68,4 @@ def test():
     assert search(('alt', ('lit', 'b'), ('lit', 'c')), 'ab') == 'b'
     return 'tests pass'
 
-print search(('alt', ('lit', 'b'), ('lit', 'c')), 'ab')
+print test()
