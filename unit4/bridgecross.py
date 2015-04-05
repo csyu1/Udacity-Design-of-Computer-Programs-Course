@@ -24,7 +24,6 @@ def bsuccessors(state):
     # your code here  
     successors = {}
     if 'light' in here:
-        moving_set = None
         here = frozenset(here) - set(['light'])
         for j in here:
             for k in here:
