@@ -30,6 +30,9 @@ def subway(**lines):
     """Define a subway map. Input is subway(linename='station1 station2...'...).
     Convert that and return a dict of the form: {station:{neighbor:line,...},...}"""
     ## your code here
+    for key in lines:
+        lines[key] = lines[key].split(' ')
+    return lines
 
 boston = subway(
     blue='bowdoin government state aquarium maverick airport suffolk revere wonderland',
@@ -40,6 +43,14 @@ boston = subway(
 def ride(here, there, system=boston):
     "Return a path on the subway system from here to there."
     ## your code here
+
+    def ride_successor(state):
+        pass
+        
+    def reached_there(state):
+        pass
+
+    return shortest_path_search(here, ride_successor, reached_there)
 
 def longest_ride(system):
     """"Return the longest possible 'shortest path' 
@@ -92,4 +103,5 @@ def test_ride():
     assert len(path_states(longest_ride(boston))) == 16
     return 'test_ride passes'
 
-print test_ride()
+#print test_ride()
+print boston
