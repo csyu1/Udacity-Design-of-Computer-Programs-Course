@@ -49,13 +49,11 @@ def ride(here, there, system=boston):
         successor = {}
         for line in system:
             if here in system[line]:
-                for index, station in enumerate(system[line]):
-                    if station is here: continue
-                    if index > system[line].index(here) and index - system[line].index(here) == 1:
-                        successor[station] = line
-                    if index < system[line].index(here) and index - system[line].index(here) == -1:
-                        successor[station] = line
-                    
+                here_index = system[line].index(here)
+                if here_index + 1 < len(system[line]):
+                    successor[system[line][here_index+1]] = line
+                if here_index - 1 > -1:
+                    successor[system[line][here_index-1]] = line                    
         return successor
         
         
