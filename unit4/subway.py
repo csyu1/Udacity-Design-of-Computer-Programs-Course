@@ -26,6 +26,8 @@
 # longest_ride() will be explicitly tested. If your code passes the 
 # assert statements in test_ride(), it should be marked correct.
 
+import itertools
+
 def subway(**lines):
     """Define a subway map. Input is subway(linename='station1 station2...'...).
     Convert that and return a dict of the form: {station:{neighbor:line,...},...}"""
@@ -66,6 +68,10 @@ def longest_ride(system):
     """"Return the longest possible 'shortest path' 
     ride between any two stops in the system."""
     ## your code here
+    stations = []
+    for k in system:
+        stations = stations + system[k]
+    return max( [ride(a,b) for a in stations for b in stations],key = len)
 
 def shortest_path_search(start, successors, is_goal):
     """Find the shortest path from start state to a state
@@ -104,14 +110,13 @@ def test_ride():
     assert ride('newton', 'alewife') == [
         'newton', 'green', 'kenmore', 'green', 'copley', 'green', 'park', 'red', 'charles', 'red',
         'mit', 'red', 'central', 'red', 'harvard', 'red', 'porter', 'red', 'davis', 'red', 'alewife']
-    """
     assert (path_states(longest_ride(boston)) == [
         'wonderland', 'revere', 'suffolk', 'airport', 'maverick', 'aquarium', 'state', 'downtown', 'park',
         'charles', 'mit', 'central', 'harvard', 'porter', 'davis', 'alewife'] or 
         path_states(longest_ride(boston)) == [
                 'alewife', 'davis', 'porter', 'harvard', 'central', 'mit', 'charles', 
                 'park', 'downtown', 'state', 'aquarium', 'maverick', 'airport', 'suffolk', 'revere', 'wonderland'])
-    assert len(path_states(longest_ride(boston))) == 16"""
+    assert len(path_states(longest_ride(boston))) == 16
     return 'test_ride passes'
 
 print test_ride()
