@@ -158,11 +158,21 @@ def sub(p1, p2):
 
 def mul(p1, p2):
     "Return a new polynomial which is the product of polynomials p1 and p2."
-
-
+    result = [0] * ((len(p1.coefs) - 1) + (len(p2.coefs) - 1) + 1)
+    for exp1, coef1 in enumerate(p1.coefs):
+        for exp2, coef2 in enumerate(p2.coefs):
+            result[exp1 + exp2] = result[exp1 + exp2] + coef1 * coef2
+    return poly(tuple(result))
+    
 def power(p, n):
     "Return a new polynomial which is p to the nth power (n a non-negative integer)."
-
+    f = None
+    for k in range(n):
+        if f is None:
+            f = p
+        else:
+            f = mul(f, p)
+    return f    
 
 """
 If your calculus is rusty (or non-existant), here is a refresher:
@@ -214,5 +224,3 @@ def test_poly2():
     assert same_name(p1.__name__,newp1.__name__)
 
 
-f = poly((10,20,30))
-print f.__name__
