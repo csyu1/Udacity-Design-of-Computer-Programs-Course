@@ -71,7 +71,7 @@ def longest_ride(system):
     stations = []
     for k in system:
         stations = stations + system[k]
-    return max( [ride(a,b) for a in stations for b in stations],key = len)
+    return max([ride(a,b) for a in stations for b in stations], key = len)
 
 def shortest_path_search(start, successors, is_goal):
     """Find the shortest path from start state to a state
