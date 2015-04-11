@@ -188,6 +188,11 @@ to the function integral (withh default C=0).
     
 def deriv(p):
     "Return the derivative of a function p (with respect to its argument)."
+    result = [0] * (len(p.coefs) - 1)
+    for exp, coef in enumerate(p.coefs):
+        if exp == 0: continue
+        result[exp-1] = exp*coef
+    return poly(tuple(result))
 
 
 def integral(p, C=0):
@@ -222,5 +227,4 @@ def test_poly2():
     newp1 = Poly('30 * x**2 + 20 * x + 10')
     assert p1(100) == newp1(100)
     assert same_name(p1.__name__,newp1.__name__)
-
 
