@@ -58,6 +58,27 @@ def poly(coefs):
     '30 * x**2 + 20 * x + 10'.  Also store the coefs on the .coefs attribute of
     the function, and the str of the formula on the .__name__ attribute.'"""
     # your code here (I won't repeat "your code here"; there's one for each function)
+    def f(x):
+        value = 0
+        for exp, coef in enumerate(coefs):
+            value = value + coef * x**exp 
+        return value
+    f.__name__ = ""
+    for exp, k in enumerate(coefs):
+        prepend = ""
+        if k is not 1:
+            prepend = prepend + str(k)
+        if k == 0:
+            continue
+        if not exp is 0:
+            if exp is 1:
+                prepend = prepend + ' * x'  + ' + '
+            else:
+                prepend = prepend + ' * x**' + str(exp) + ' + '
+        f.__name__ = prepend + f.__name__
+        
+    f.coefs = coefs
+    return f
 
 
 def test_poly():
@@ -78,8 +99,8 @@ def test_poly():
     assert p9(2) == 512
     p4 =  add(p1, p3)
     assert same_name(p4.__name__, 'x**3 + 30 * x**2 + 20 * x + 10')
-
     assert same_name(poly((1, 1)).__name__, 'x + 1')
+
     assert same_name(power(poly((1, 1)), 10).__name__,
             'x**10 + 10 * x**9 + 45 * x**8 + 120 * x**7 + 210 * x**6 + 252 * x**5 + 210' +
             ' * x**4 + 120 * x**3 + 45 * x**2 + 10 * x + 1')
@@ -110,13 +131,29 @@ def same_name(name1, name2):
 def is_poly(x):
     "Return true if x is a poly (polynomial)."
     ## For examples, see the test_poly function
+    try:
+        coefs = x.coefs
+        return True
+    except:
+        return False
 
 def add(p1, p2):
     "Return a new polynomial which is the sum of polynomials p1 and p2."
-
+    coefs1, coefs2 = p1.coefs, p2.coefs
+    result = []
+    for k in range(len(max(coefs1, coefs2, key = len))):
+        if k < len(coefs2) and k < len(coefs1):
+            result.append(coefs1[k] + coefs2[k])
+        elif k < len(coefs1):
+            result.append(coefs1[k])
+        elif k < len(coefs2):
+            result.append(coefs2[k])
+    return poly(tuple(result))
 
 def sub(p1, p2):
     "Return a new polynomial which is the difference of polynomials p1 and p2."
+    p2coefs = tuple([-k for k in p2.coefs])
+    return add(p1, poly(p2coefs))
 
 
 def mul(p1, p2):
@@ -176,3 +213,6 @@ def test_poly2():
     assert p1(100) == newp1(100)
     assert same_name(p1.__name__,newp1.__name__)
 
+
+f = poly((10,20,30))
+print f.__name__
