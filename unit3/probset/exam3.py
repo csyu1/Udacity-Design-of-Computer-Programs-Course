@@ -64,19 +64,20 @@ def poly(coefs):
             value = value + coef * x**exp 
         return value
     f.__name__ = ""
-    for exp, k in enumerate(coefs):
-        prepend = ""
-        if k is not 1:
-            prepend = prepend + str(k)
-        if k == 0:
-            continue
-        if not exp is 0:
-            if exp is 1:
-                prepend = prepend + ' * x'  + ' + '
-            else:
-                prepend = prepend + ' * x**' + str(exp) + ' + '
-        f.__name__ = prepend + f.__name__
-        
+    for exp, coef in list(enumerate(coefs))[::-1]:
+        append_value = ""
+        if coef == 0: continue
+        if coef != 1 or exp == 0:
+            append_value = append_value + str(coef)
+            if exp != 0: append_value = append_value + '*'
+        if exp == 1:
+                append_value = append_value + "x"
+        elif exp != 0:
+            append_value = append_value + "x**" + str(exp) 
+        if exp - 1 != -1 and coefs[exp - 1] != 0:
+            append_value = append_value + " + "
+            
+        f.__name__ = f.__name__ + append_value
     f.coefs = coefs
     return f
 
@@ -166,12 +167,9 @@ def mul(p1, p2):
     
 def power(p, n):
     "Return a new polynomial which is p to the nth power (n a non-negative integer)."
-    f = None
+    f = poly((1,))
     for k in range(n):
-        if f is None:
-            f = p
-        else:
-            f = mul(f, p)
+        f = mul(f, p)
     return f    
 
 """
@@ -188,15 +186,17 @@ to the function integral (withh default C=0).
     
 def deriv(p):
     "Return the derivative of a function p (with respect to its argument)."
-    result = [0] * (len(p.coefs) - 1)
-    for exp, coef in enumerate(p.coefs):
-        if exp == 0: continue
-        result[exp-1] = exp*coef
+    result = [exp*coef for exp, coef in enumerate(p.coefs) if exp != 0]
     return poly(tuple(result))
 
 
 def integral(p, C=0):
     "Return the integral of a function p (with respect to its argument)."
+    result = [0] * (len(p.coefs) + 1)
+    result[0] = C
+    for exp, coef in enumerate(p.coefs):
+        result[exp + 1] = coef/(exp + 1)
+    return poly(tuple(result))
 
 
 """
@@ -228,3 +228,5 @@ def test_poly2():
     assert p1(100) == newp1(100)
     assert same_name(p1.__name__,newp1.__name__)
 
+
+test_poly()
